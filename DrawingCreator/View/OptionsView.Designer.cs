@@ -43,18 +43,29 @@ namespace DrawingCreator.View
             this.RedScroll = new System.Windows.Forms.HScrollBar();
             this.GreenScroll = new System.Windows.Forms.HScrollBar();
             this.SaveFileButton = new System.Windows.Forms.Button();
+            this.SelectionCanvasSizeBox = new System.Windows.Forms.GroupBox();
+            this.WidthScroll = new System.Windows.Forms.HScrollBar();
+            this.HeightScroll = new System.Windows.Forms.HScrollBar();
+            this.WidthLabel = new System.Windows.Forms.Label();
+            this.HeightLabel = new System.Windows.Forms.Label();
+            this.WidthValueBox = new System.Windows.Forms.TextBox();
+            this.HeightValueBox = new System.Windows.Forms.TextBox();
+            this.PXLabel1 = new System.Windows.Forms.Label();
+            this.PXLabel2 = new System.Windows.Forms.Label();
             this.OptionsBox.SuspendLayout();
             this.SelectionColorsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SampleColorBox)).BeginInit();
+            this.SelectionCanvasSizeBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // OptionsBox
             // 
+            this.OptionsBox.Controls.Add(this.SelectionCanvasSizeBox);
             this.OptionsBox.Controls.Add(this.SelectionColorsBox);
             this.OptionsBox.Controls.Add(this.SaveFileButton);
             this.OptionsBox.Location = new System.Drawing.Point(12, 12);
             this.OptionsBox.Name = "OptionsBox";
-            this.OptionsBox.Size = new System.Drawing.Size(750, 207);
+            this.OptionsBox.Size = new System.Drawing.Size(693, 321);
             this.OptionsBox.TabIndex = 3;
             this.OptionsBox.TabStop = false;
             this.OptionsBox.Text = "Options";
@@ -71,7 +82,7 @@ namespace DrawingCreator.View
             this.SelectionColorsBox.Controls.Add(this.BlueScroll);
             this.SelectionColorsBox.Controls.Add(this.RedScroll);
             this.SelectionColorsBox.Controls.Add(this.GreenScroll);
-            this.SelectionColorsBox.Location = new System.Drawing.Point(15, 30);
+            this.SelectionColorsBox.Location = new System.Drawing.Point(15, 145);
             this.SelectionColorsBox.Name = "SelectionColorsBox";
             this.SelectionColorsBox.Size = new System.Drawing.Size(643, 158);
             this.SelectionColorsBox.TabIndex = 3;
@@ -160,7 +171,7 @@ namespace DrawingCreator.View
             // 
             // SaveFileButton
             // 
-            this.SaveFileButton.Location = new System.Drawing.Point(664, 80);
+            this.SaveFileButton.Location = new System.Drawing.Point(600, 49);
             this.SaveFileButton.Name = "SaveFileButton";
             this.SaveFileButton.Size = new System.Drawing.Size(80, 70);
             this.SaveFileButton.TabIndex = 1;
@@ -168,11 +179,92 @@ namespace DrawingCreator.View
             this.SaveFileButton.UseVisualStyleBackColor = true;
             this.SaveFileButton.Click += new System.EventHandler(this.SaveFileButton_Click);
             // 
+            // SelectionCanvasSizeBox
+            // 
+            this.SelectionCanvasSizeBox.Controls.Add(this.PXLabel2);
+            this.SelectionCanvasSizeBox.Controls.Add(this.PXLabel1);
+            this.SelectionCanvasSizeBox.Controls.Add(this.HeightValueBox);
+            this.SelectionCanvasSizeBox.Controls.Add(this.WidthValueBox);
+            this.SelectionCanvasSizeBox.Controls.Add(this.HeightLabel);
+            this.SelectionCanvasSizeBox.Controls.Add(this.WidthLabel);
+            this.SelectionCanvasSizeBox.Controls.Add(this.HeightScroll);
+            this.SelectionCanvasSizeBox.Controls.Add(this.WidthScroll);
+            this.SelectionCanvasSizeBox.Location = new System.Drawing.Point(15, 30);
+            this.SelectionCanvasSizeBox.Name = "SelectionCanvasSizeBox";
+            this.SelectionCanvasSizeBox.Size = new System.Drawing.Size(579, 109);
+            this.SelectionCanvasSizeBox.TabIndex = 4;
+            this.SelectionCanvasSizeBox.TabStop = false;
+            this.SelectionCanvasSizeBox.Text = "Choose your drawing size";
+            // 
+            // WidthScroll
+            // 
+            this.WidthScroll.Location = new System.Drawing.Point(104, 28);
+            this.WidthScroll.Name = "WidthScroll";
+            this.WidthScroll.Size = new System.Drawing.Size(364, 23);
+            this.WidthScroll.TabIndex = 0;
+            // 
+            // HeightScroll
+            // 
+            this.HeightScroll.Location = new System.Drawing.Point(104, 65);
+            this.HeightScroll.Name = "HeightScroll";
+            this.HeightScroll.Size = new System.Drawing.Size(364, 23);
+            this.HeightScroll.TabIndex = 1;
+            // 
+            // WidthLabel
+            // 
+            this.WidthLabel.AutoSize = true;
+            this.WidthLabel.Location = new System.Drawing.Point(24, 34);
+            this.WidthLabel.Name = "WidthLabel";
+            this.WidthLabel.Size = new System.Drawing.Size(57, 17);
+            this.WidthLabel.TabIndex = 2;
+            this.WidthLabel.Text = "WIDTH:";
+            // 
+            // HeightLabel
+            // 
+            this.HeightLabel.AutoSize = true;
+            this.HeightLabel.Location = new System.Drawing.Point(24, 65);
+            this.HeightLabel.Name = "HeightLabel";
+            this.HeightLabel.Size = new System.Drawing.Size(64, 17);
+            this.HeightLabel.TabIndex = 3;
+            this.HeightLabel.Text = "HEIGHT:";
+            // 
+            // WidthValueBox
+            // 
+            this.WidthValueBox.Location = new System.Drawing.Point(485, 30);
+            this.WidthValueBox.Name = "WidthValueBox";
+            this.WidthValueBox.Size = new System.Drawing.Size(52, 22);
+            this.WidthValueBox.TabIndex = 4;
+            // 
+            // HeightValueBox
+            // 
+            this.HeightValueBox.Location = new System.Drawing.Point(485, 67);
+            this.HeightValueBox.Name = "HeightValueBox";
+            this.HeightValueBox.Size = new System.Drawing.Size(52, 22);
+            this.HeightValueBox.TabIndex = 5;
+            // 
+            // PXLabel1
+            // 
+            this.PXLabel1.AutoSize = true;
+            this.PXLabel1.Location = new System.Drawing.Point(543, 33);
+            this.PXLabel1.Name = "PXLabel1";
+            this.PXLabel1.Size = new System.Drawing.Size(26, 17);
+            this.PXLabel1.TabIndex = 6;
+            this.PXLabel1.Text = "PX";
+            // 
+            // PXLabel2
+            // 
+            this.PXLabel2.AutoSize = true;
+            this.PXLabel2.Location = new System.Drawing.Point(543, 70);
+            this.PXLabel2.Name = "PXLabel2";
+            this.PXLabel2.Size = new System.Drawing.Size(26, 17);
+            this.PXLabel2.TabIndex = 7;
+            this.PXLabel2.Text = "PX";
+            // 
             // OptionsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(718, 349);
             this.Controls.Add(this.OptionsBox);
             this.Name = "OptionsView";
             this.Text = "Options";
@@ -182,6 +274,8 @@ namespace DrawingCreator.View
             this.SelectionColorsBox.ResumeLayout(false);
             this.SelectionColorsBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SampleColorBox)).EndInit();
+            this.SelectionCanvasSizeBox.ResumeLayout(false);
+            this.SelectionCanvasSizeBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -201,5 +295,14 @@ namespace DrawingCreator.View
         private System.Windows.Forms.HScrollBar RedScroll;
         private System.Windows.Forms.HScrollBar GreenScroll;
         private System.Windows.Forms.Button SaveFileButton;
+        private System.Windows.Forms.GroupBox SelectionCanvasSizeBox;
+        private System.Windows.Forms.HScrollBar WidthScroll;
+        private System.Windows.Forms.HScrollBar HeightScroll;
+        private System.Windows.Forms.Label WidthLabel;
+        private System.Windows.Forms.Label HeightLabel;
+        private System.Windows.Forms.TextBox HeightValueBox;
+        private System.Windows.Forms.TextBox WidthValueBox;
+        private System.Windows.Forms.Label PXLabel2;
+        private System.Windows.Forms.Label PXLabel1;
     }
 }

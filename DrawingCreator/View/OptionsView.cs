@@ -32,6 +32,16 @@ namespace DrawingCreator.View
             BlueValueBox.ReadOnly = true;
             BlueValueBox.Text = BlueScroll.Value.ToString();
 
+            // Inicialización cajas de texto del tamaño.
+            //foreach(Control control in Controls) // Provisional, no sirve de momento, solo accede a GroupBox.
+            //{
+            //    if(control is TextBox) ((TextBox)control).ReadOnly = true;
+            //}
+            WidthValueBox.ReadOnly = true;
+            WidthValueBox.Text = WidthScroll.Value.ToString();
+            HeightValueBox.ReadOnly = true;
+            HeightValueBox.Text = HeightScroll.Value.ToString();     
+
             // Inicialización "PictureBox" color de muestra.
             SampleColorBox.BorderStyle = BorderStyle.Fixed3D;
             SampleColorBox.BackColor = Controller.getRGBColorWithMix(Convert.ToInt16(RedValueBox.Text),
