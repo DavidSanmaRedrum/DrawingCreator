@@ -3,6 +3,7 @@ using DrawingCreator.View;
 using System;
 using System.Drawing;
 using System.IO;
+using System.Windows.Forms;
 
 namespace DrawingCreator
 {
@@ -78,8 +79,14 @@ namespace DrawingCreator
 
         public static void openOptionsView()
         {
-            var optionsView = new OptionsView();
+            OptionsView optionsView = new OptionsView();
             optionsView.Show();
+        }
+
+        public static void closeDrawingView()
+        {
+            DrawingView drawingView = (DrawingView) Application.OpenForms["DrawingView"];
+            drawingView.Close();
         }
 
         public static void setDrawingSize(int width, int height)

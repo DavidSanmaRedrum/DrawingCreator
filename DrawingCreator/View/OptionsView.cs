@@ -78,6 +78,12 @@ namespace DrawingCreator.View
                 MessageBox.Show("ERROR: Void drawing");
             }
         }
+
+        private void OptionsView_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Si se cierra la vista de opciones se cerrará también la principal (DrawingView)
+            Controller.closeDrawingView();
+        }
     }
 }
 

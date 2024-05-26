@@ -176,6 +176,7 @@ namespace DrawingCreator.View
             this.Controls.Add(this.OptionsBox);
             this.Name = "OptionsView";
             this.Text = "Options";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OptionsView_FormClosed);
             this.Load += new System.EventHandler(this.OptionsView_Load);
             this.OptionsBox.ResumeLayout(false);
             this.SelectionColorsBox.ResumeLayout(false);
