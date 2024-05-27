@@ -55,6 +55,7 @@ namespace DrawingCreator
             {
                 for (int y = 0; y < currentBitmap.Height; y++)
                 {
+                    //MessageBox.Show(currentBitmap.GetPixel(x, y).ToString());
                     if (!currentBitmap.GetPixel(x, y).Equals(Color.FromArgb(0, 0, 0, 0)))
                     {
                         isPixelVoid = false;
@@ -68,7 +69,7 @@ namespace DrawingCreator
 
         public static Color getRGBColorWithMix(int redCode, int greenCode, int blueCode)
         {
-            currentColor = Color.FromArgb(redCode, greenCode, blueCode);
+            currentColor = Color.FromArgb(255, redCode, greenCode, blueCode);
             return currentColor;
         }
 
@@ -89,7 +90,15 @@ namespace DrawingCreator
             drawingView.Close();
         }
 
-        public static void setDrawingSize(int width, int height)
+        public static int[] getDrawingSize()
+        {
+            int[] values = new int[2];
+            values[0] = drawing.getDrawingBitmap().Width;
+            values[1] = drawing.getDrawingBitmap().Height;
+            return values;
+        }
+
+        public static void setDrawing(int width, int height)
         {
             drawing = new Drawing(width, height);
         }
@@ -97,6 +106,17 @@ namespace DrawingCreator
         public static Bitmap getDrawingBitmap()
         {
             return drawing.getDrawingBitmap();
+        }
+
+        public static void setDrawingSizeInGeneralDrawingView(int width, int height)
+        {
+            DrawingView drawingView = (DrawingView) Application.OpenForms["DrawingView"];
+            drawingView.FindForm().Size = new Size(width + 33, height + 58); // Vista
+            drawingView.Controls[0].Size = new Size(width, height); // Canvas
+            Drawing newDrawing = new Drawing(width, height); // Se crea un nuevo dibujo.
+            newDrawing.setPreviousInfoInBitmap(drawingView.bitmap);
+            drawingView.bitmap = newDrawing.getDrawingBitmap();
+            drawing = newDrawing;
         }
 
     }

@@ -29,7 +29,6 @@ namespace DrawingCreator
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DrawingView));
             this.CanvasBox = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.CanvasBox)).BeginInit();
             this.SuspendLayout();
@@ -48,9 +47,8 @@ namespace DrawingCreator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(813, 592);
+            this.ClientSize = new System.Drawing.Size(466, 306);
             this.Controls.Add(this.CanvasBox);
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "DrawingView";
             this.Text = "Drawing Creator";
             this.Load += new System.EventHandler(this.DrawCreator_Load);

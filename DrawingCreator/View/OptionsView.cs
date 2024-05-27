@@ -15,6 +15,10 @@ namespace DrawingCreator.View
 
         private void OptionsView_Load(object sender, EventArgs e)
         {
+            // Propiedades:
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            MaximizeBox = false;
+
             // Inicialización "scrolls"
             RedScroll.Minimum = MINIMUM_SCROLL_VALUE;
             RedScroll.Maximum = MAXIMUM_SCROLL_VALUE;
@@ -23,6 +27,12 @@ namespace DrawingCreator.View
             BlueScroll.Minimum = MINIMUM_SCROLL_VALUE;
             BlueScroll.Maximum = MAXIMUM_SCROLL_VALUE;
 
+            // Inicialización cajas de ancho y alto:
+            int[] drawingSize = Controller.getDrawingSize();
+            WidthValueBox.Text = drawingSize[0].ToString();
+            HeightValueBox.Text = drawingSize[1].ToString();
+            WidthValueBox.MaxLength = 6;
+            HeightValueBox.MaxLength = 6;
 
             // Inicialización cajas de texto de los colores.
             RedValueBox.ReadOnly = true;
@@ -31,16 +41,7 @@ namespace DrawingCreator.View
             GreenValueBox.Text = GreenScroll.Value.ToString();
             BlueValueBox.ReadOnly = true;
             BlueValueBox.Text = BlueScroll.Value.ToString();
-
-            // Inicialización cajas de texto del tamaño.
-            //foreach(Control control in Controls) // Provisional, no sirve de momento, solo accede a GroupBox.
-            //{
-            //    if(control is TextBox) ((TextBox)control).ReadOnly = true;
-            //}
-            WidthValueBox.ReadOnly = true;
-            WidthValueBox.Text = WidthScroll.Value.ToString();
-            HeightValueBox.ReadOnly = true;
-            HeightValueBox.Text = HeightScroll.Value.ToString();     
+                
 
             // Inicialización "PictureBox" color de muestra.
             SampleColorBox.BorderStyle = BorderStyle.Fixed3D;
@@ -93,6 +94,41 @@ namespace DrawingCreator.View
         {
             // Si se cierra la vista de opciones se cerrará también la principal (DrawingView)
             Controller.closeDrawingView();
+        }
+
+        private void WidthValueBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Impedir que se puedan entrar valores no numéricos, excepto el retroceso.
+            if ((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8) e.Handled = true;
+        }
+
+        private void HeightValueBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8) e.Handled = true;
+        }
+
+        private void WidthValueBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            // Impedir que se pueda abrir la ventana de opciones al dar clic derecho.
+            if (e.Button.Equals(MouseButtons.Right)) WidthValueBox.ShortcutsEnabled = false;
+        }
+
+        private void HeightValueBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button.Equals(MouseButtons.Right)) HeightValueBox.ShortcutsEnabled = false;
+        }
+
+        private void AcceptSizeButton_Click(object sender, EventArgs e)
+        {
+            int width = Convert.ToInt32(WidthValueBox.Text);
+            int height = Convert.ToInt32(HeightValueBox.Text);
+            if ((width > 31 && height > 31) && (width < 1001 && height < 1001))
+            {
+                // Controller.setDrawingSize(width, height); // Cambiar el método por otro que ataque directamente a DrawingView y cambie el tamaño de su copia.
+                Controller.setDrawingSizeInGeneralDrawingView(width, height);
+            } else {
+                MessageBox.Show("ERROR: Parameters out of range.");
+            }
         }
     }
 }

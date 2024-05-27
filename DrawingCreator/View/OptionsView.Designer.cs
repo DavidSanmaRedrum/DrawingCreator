@@ -31,6 +31,14 @@ namespace DrawingCreator.View
         private void InitializeComponent()
         {
             this.OptionsBox = new System.Windows.Forms.GroupBox();
+            this.SelectionCanvasSizeBox = new System.Windows.Forms.GroupBox();
+            this.AcceptSizeButton = new System.Windows.Forms.Button();
+            this.PXLabel2 = new System.Windows.Forms.Label();
+            this.PXLabel1 = new System.Windows.Forms.Label();
+            this.HeightValueBox = new System.Windows.Forms.TextBox();
+            this.WidthValueBox = new System.Windows.Forms.TextBox();
+            this.HeightLabel = new System.Windows.Forms.Label();
+            this.WidthLabel = new System.Windows.Forms.Label();
             this.SelectionColorsBox = new System.Windows.Forms.GroupBox();
             this.SampleColorBox = new System.Windows.Forms.PictureBox();
             this.BlueValueBox = new System.Windows.Forms.TextBox();
@@ -43,19 +51,10 @@ namespace DrawingCreator.View
             this.RedScroll = new System.Windows.Forms.HScrollBar();
             this.GreenScroll = new System.Windows.Forms.HScrollBar();
             this.SaveFileButton = new System.Windows.Forms.Button();
-            this.SelectionCanvasSizeBox = new System.Windows.Forms.GroupBox();
-            this.WidthScroll = new System.Windows.Forms.HScrollBar();
-            this.HeightScroll = new System.Windows.Forms.HScrollBar();
-            this.WidthLabel = new System.Windows.Forms.Label();
-            this.HeightLabel = new System.Windows.Forms.Label();
-            this.WidthValueBox = new System.Windows.Forms.TextBox();
-            this.HeightValueBox = new System.Windows.Forms.TextBox();
-            this.PXLabel1 = new System.Windows.Forms.Label();
-            this.PXLabel2 = new System.Windows.Forms.Label();
             this.OptionsBox.SuspendLayout();
+            this.SelectionCanvasSizeBox.SuspendLayout();
             this.SelectionColorsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SampleColorBox)).BeginInit();
-            this.SelectionCanvasSizeBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // OptionsBox
@@ -65,10 +64,90 @@ namespace DrawingCreator.View
             this.OptionsBox.Controls.Add(this.SaveFileButton);
             this.OptionsBox.Location = new System.Drawing.Point(12, 12);
             this.OptionsBox.Name = "OptionsBox";
-            this.OptionsBox.Size = new System.Drawing.Size(693, 321);
+            this.OptionsBox.Size = new System.Drawing.Size(671, 321);
             this.OptionsBox.TabIndex = 3;
             this.OptionsBox.TabStop = false;
             this.OptionsBox.Text = "Options";
+            // 
+            // SelectionCanvasSizeBox
+            // 
+            this.SelectionCanvasSizeBox.Controls.Add(this.AcceptSizeButton);
+            this.SelectionCanvasSizeBox.Controls.Add(this.PXLabel2);
+            this.SelectionCanvasSizeBox.Controls.Add(this.PXLabel1);
+            this.SelectionCanvasSizeBox.Controls.Add(this.HeightValueBox);
+            this.SelectionCanvasSizeBox.Controls.Add(this.WidthValueBox);
+            this.SelectionCanvasSizeBox.Controls.Add(this.HeightLabel);
+            this.SelectionCanvasSizeBox.Controls.Add(this.WidthLabel);
+            this.SelectionCanvasSizeBox.Location = new System.Drawing.Point(15, 30);
+            this.SelectionCanvasSizeBox.Name = "SelectionCanvasSizeBox";
+            this.SelectionCanvasSizeBox.Size = new System.Drawing.Size(339, 109);
+            this.SelectionCanvasSizeBox.TabIndex = 4;
+            this.SelectionCanvasSizeBox.TabStop = false;
+            this.SelectionCanvasSizeBox.Text = "Choose your drawing size";
+            // 
+            // AcceptSizeButton
+            // 
+            this.AcceptSizeButton.Location = new System.Drawing.Point(231, 34);
+            this.AcceptSizeButton.Name = "AcceptSizeButton";
+            this.AcceptSizeButton.Size = new System.Drawing.Size(94, 51);
+            this.AcceptSizeButton.TabIndex = 8;
+            this.AcceptSizeButton.Text = "ACCEPT SIZE";
+            this.AcceptSizeButton.UseVisualStyleBackColor = true;
+            this.AcceptSizeButton.Click += new System.EventHandler(this.AcceptSizeButton_Click);
+            // 
+            // PXLabel2
+            // 
+            this.PXLabel2.AutoSize = true;
+            this.PXLabel2.Location = new System.Drawing.Point(175, 66);
+            this.PXLabel2.Name = "PXLabel2";
+            this.PXLabel2.Size = new System.Drawing.Size(26, 17);
+            this.PXLabel2.TabIndex = 7;
+            this.PXLabel2.Text = "PX";
+            // 
+            // PXLabel1
+            // 
+            this.PXLabel1.AutoSize = true;
+            this.PXLabel1.Location = new System.Drawing.Point(175, 36);
+            this.PXLabel1.Name = "PXLabel1";
+            this.PXLabel1.Size = new System.Drawing.Size(26, 17);
+            this.PXLabel1.TabIndex = 6;
+            this.PXLabel1.Text = "PX";
+            // 
+            // HeightValueBox
+            // 
+            this.HeightValueBox.Location = new System.Drawing.Point(90, 63);
+            this.HeightValueBox.Name = "HeightValueBox";
+            this.HeightValueBox.Size = new System.Drawing.Size(82, 22);
+            this.HeightValueBox.TabIndex = 5;
+            this.HeightValueBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.HeightValueBox_KeyPress);
+            this.HeightValueBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.HeightValueBox_MouseDown);
+            // 
+            // WidthValueBox
+            // 
+            this.WidthValueBox.Location = new System.Drawing.Point(90, 33);
+            this.WidthValueBox.Name = "WidthValueBox";
+            this.WidthValueBox.Size = new System.Drawing.Size(82, 22);
+            this.WidthValueBox.TabIndex = 4;
+            this.WidthValueBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.WidthValueBox_KeyPress);
+            this.WidthValueBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.WidthValueBox_MouseDown);
+            // 
+            // HeightLabel
+            // 
+            this.HeightLabel.AutoSize = true;
+            this.HeightLabel.Location = new System.Drawing.Point(24, 65);
+            this.HeightLabel.Name = "HeightLabel";
+            this.HeightLabel.Size = new System.Drawing.Size(64, 17);
+            this.HeightLabel.TabIndex = 3;
+            this.HeightLabel.Text = "HEIGHT:";
+            // 
+            // WidthLabel
+            // 
+            this.WidthLabel.AutoSize = true;
+            this.WidthLabel.Location = new System.Drawing.Point(24, 34);
+            this.WidthLabel.Name = "WidthLabel";
+            this.WidthLabel.Size = new System.Drawing.Size(57, 17);
+            this.WidthLabel.TabIndex = 2;
+            this.WidthLabel.Text = "WIDTH:";
             // 
             // SelectionColorsBox
             // 
@@ -171,7 +250,7 @@ namespace DrawingCreator.View
             // 
             // SaveFileButton
             // 
-            this.SaveFileButton.Location = new System.Drawing.Point(600, 49);
+            this.SaveFileButton.Location = new System.Drawing.Point(578, 54);
             this.SaveFileButton.Name = "SaveFileButton";
             this.SaveFileButton.Size = new System.Drawing.Size(80, 70);
             this.SaveFileButton.TabIndex = 1;
@@ -179,103 +258,22 @@ namespace DrawingCreator.View
             this.SaveFileButton.UseVisualStyleBackColor = true;
             this.SaveFileButton.Click += new System.EventHandler(this.SaveFileButton_Click);
             // 
-            // SelectionCanvasSizeBox
-            // 
-            this.SelectionCanvasSizeBox.Controls.Add(this.PXLabel2);
-            this.SelectionCanvasSizeBox.Controls.Add(this.PXLabel1);
-            this.SelectionCanvasSizeBox.Controls.Add(this.HeightValueBox);
-            this.SelectionCanvasSizeBox.Controls.Add(this.WidthValueBox);
-            this.SelectionCanvasSizeBox.Controls.Add(this.HeightLabel);
-            this.SelectionCanvasSizeBox.Controls.Add(this.WidthLabel);
-            this.SelectionCanvasSizeBox.Controls.Add(this.HeightScroll);
-            this.SelectionCanvasSizeBox.Controls.Add(this.WidthScroll);
-            this.SelectionCanvasSizeBox.Location = new System.Drawing.Point(15, 30);
-            this.SelectionCanvasSizeBox.Name = "SelectionCanvasSizeBox";
-            this.SelectionCanvasSizeBox.Size = new System.Drawing.Size(579, 109);
-            this.SelectionCanvasSizeBox.TabIndex = 4;
-            this.SelectionCanvasSizeBox.TabStop = false;
-            this.SelectionCanvasSizeBox.Text = "Choose your drawing size";
-            // 
-            // WidthScroll
-            // 
-            this.WidthScroll.Location = new System.Drawing.Point(104, 28);
-            this.WidthScroll.Name = "WidthScroll";
-            this.WidthScroll.Size = new System.Drawing.Size(364, 23);
-            this.WidthScroll.TabIndex = 0;
-            // 
-            // HeightScroll
-            // 
-            this.HeightScroll.Location = new System.Drawing.Point(104, 65);
-            this.HeightScroll.Name = "HeightScroll";
-            this.HeightScroll.Size = new System.Drawing.Size(364, 23);
-            this.HeightScroll.TabIndex = 1;
-            // 
-            // WidthLabel
-            // 
-            this.WidthLabel.AutoSize = true;
-            this.WidthLabel.Location = new System.Drawing.Point(24, 34);
-            this.WidthLabel.Name = "WidthLabel";
-            this.WidthLabel.Size = new System.Drawing.Size(57, 17);
-            this.WidthLabel.TabIndex = 2;
-            this.WidthLabel.Text = "WIDTH:";
-            // 
-            // HeightLabel
-            // 
-            this.HeightLabel.AutoSize = true;
-            this.HeightLabel.Location = new System.Drawing.Point(24, 65);
-            this.HeightLabel.Name = "HeightLabel";
-            this.HeightLabel.Size = new System.Drawing.Size(64, 17);
-            this.HeightLabel.TabIndex = 3;
-            this.HeightLabel.Text = "HEIGHT:";
-            // 
-            // WidthValueBox
-            // 
-            this.WidthValueBox.Location = new System.Drawing.Point(485, 30);
-            this.WidthValueBox.Name = "WidthValueBox";
-            this.WidthValueBox.Size = new System.Drawing.Size(52, 22);
-            this.WidthValueBox.TabIndex = 4;
-            // 
-            // HeightValueBox
-            // 
-            this.HeightValueBox.Location = new System.Drawing.Point(485, 67);
-            this.HeightValueBox.Name = "HeightValueBox";
-            this.HeightValueBox.Size = new System.Drawing.Size(52, 22);
-            this.HeightValueBox.TabIndex = 5;
-            // 
-            // PXLabel1
-            // 
-            this.PXLabel1.AutoSize = true;
-            this.PXLabel1.Location = new System.Drawing.Point(543, 33);
-            this.PXLabel1.Name = "PXLabel1";
-            this.PXLabel1.Size = new System.Drawing.Size(26, 17);
-            this.PXLabel1.TabIndex = 6;
-            this.PXLabel1.Text = "PX";
-            // 
-            // PXLabel2
-            // 
-            this.PXLabel2.AutoSize = true;
-            this.PXLabel2.Location = new System.Drawing.Point(543, 70);
-            this.PXLabel2.Name = "PXLabel2";
-            this.PXLabel2.Size = new System.Drawing.Size(26, 17);
-            this.PXLabel2.TabIndex = 7;
-            this.PXLabel2.Text = "PX";
-            // 
             // OptionsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(718, 349);
+            this.ClientSize = new System.Drawing.Size(697, 349);
             this.Controls.Add(this.OptionsBox);
             this.Name = "OptionsView";
             this.Text = "Options";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.OptionsView_FormClosed);
             this.Load += new System.EventHandler(this.OptionsView_Load);
             this.OptionsBox.ResumeLayout(false);
+            this.SelectionCanvasSizeBox.ResumeLayout(false);
+            this.SelectionCanvasSizeBox.PerformLayout();
             this.SelectionColorsBox.ResumeLayout(false);
             this.SelectionColorsBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SampleColorBox)).EndInit();
-            this.SelectionCanvasSizeBox.ResumeLayout(false);
-            this.SelectionCanvasSizeBox.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -296,13 +294,12 @@ namespace DrawingCreator.View
         private System.Windows.Forms.HScrollBar GreenScroll;
         private System.Windows.Forms.Button SaveFileButton;
         private System.Windows.Forms.GroupBox SelectionCanvasSizeBox;
-        private System.Windows.Forms.HScrollBar WidthScroll;
-        private System.Windows.Forms.HScrollBar HeightScroll;
         private System.Windows.Forms.Label WidthLabel;
         private System.Windows.Forms.Label HeightLabel;
         private System.Windows.Forms.TextBox HeightValueBox;
         private System.Windows.Forms.TextBox WidthValueBox;
         private System.Windows.Forms.Label PXLabel2;
         private System.Windows.Forms.Label PXLabel1;
+        private System.Windows.Forms.Button AcceptSizeButton;
     }
 }
