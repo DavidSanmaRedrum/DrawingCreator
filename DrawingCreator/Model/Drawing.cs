@@ -1,4 +1,5 @@
-﻿using System.Drawing;
+﻿using System;
+using System.Drawing;
 
 namespace DrawingCreator.Model
 {
@@ -20,9 +21,9 @@ namespace DrawingCreator.Model
         {
             int widthRest = this.bitmap.Width - previousBitmap.Width;
             int heightRest = this.bitmap.Height - previousBitmap.Height;
-            for(int x = 0; x < previousBitmap.Width - widthRest; x ++)
+            for(int x = 0; x < previousBitmap.Width - Math.Abs(widthRest); x ++)
             {
-                for(int y = 0; y < previousBitmap.Height - heightRest; y ++)
+                for(int y = 0; y < previousBitmap.Height - Math.Abs(heightRest); y ++)
                 {
                     this.bitmap.SetPixel(x, y, previousBitmap.GetPixel(x, y));  
                 }
