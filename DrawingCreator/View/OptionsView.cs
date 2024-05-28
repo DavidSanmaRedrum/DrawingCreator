@@ -12,6 +12,8 @@ namespace DrawingCreator.View
 
         private static int MINIMUM_SCROLL_VALUE = 0;
         private static int MAXIMUM_SCROLL_VALUE = 264;
+        private static int MIN_PX_RANK = 32;
+        private static int MAX_PX_RANK = 1000;
 
         private void OptionsView_Load(object sender, EventArgs e)
         {
@@ -41,7 +43,9 @@ namespace DrawingCreator.View
             GreenValueBox.Text = GreenScroll.Value.ToString();
             BlueValueBox.ReadOnly = true;
             BlueValueBox.Text = BlueScroll.Value.ToString();
-                
+
+            // Inicialización "GroupBox" selección de tamaño.
+            SelectionCanvasSizeBox.Text = "Choose your drawing size: (" + MIN_PX_RANK + " PX  To " + MAX_PX_RANK + " PX)";
 
             // Inicialización "PictureBox" color de muestra.
             SampleColorBox.BorderStyle = BorderStyle.Fixed3D;
@@ -100,11 +104,13 @@ namespace DrawingCreator.View
         {
             // Impedir que se puedan entrar valores no numéricos, excepto el retroceso.
             if ((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8) e.Handled = true;
+            
         }
 
         private void HeightValueBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if ((e.KeyChar < 48 || e.KeyChar > 57) && e.KeyChar != 8) e.Handled = true;
+
         }
 
         private void WidthValueBox_MouseDown(object sender, MouseEventArgs e)
@@ -120,15 +126,20 @@ namespace DrawingCreator.View
 
         private void AcceptSizeButton_Click(object sender, EventArgs e)
         {
-            int width = Convert.ToInt32(WidthValueBox.Text);
-            int height = Convert.ToInt32(HeightValueBox.Text);
-            if ((width > 31 && height > 31) && (width < 1001 && height < 1001))
+            if (WidthValueBox.Text.Length > 0 && HeightValueBox.Text.Length > 0)
             {
-                // Controller.setDrawingSize(width, height); // Cambiar el método por otro que ataque directamente a DrawingView y cambie el tamaño de su copia.
-                Controller.setDrawingSizeInGeneralDrawingView(width, height);
-            } else {
-                MessageBox.Show("ERROR: Parameters out of range.");
-            }
+                int width = Convert.ToInt32(WidthValueBox.Text);
+                int height = Convert.ToInt32(HeightValueBox.Text);
+                if (width > MIN_PX_RANK - 1 && height > MIN_PX_RANK - 1 && width < MAX_PX_RANK + 1 && height < MAX_PX_RANK + 1)
+                {
+                    int[] previousValues = Controller.getWidthAndHeightPreviousValue();
+                    if (width != previousValues[0] || height != previousValues[1])
+                    {
+                        Controller.setDrawingSizeInGeneralDrawingView(width, height);
+                        Controller.setWidthAndHeightPreviousValue(width, height);
+                    } else MessageBox.Show("ERROR: Current values are the same as previous values.");
+                } else MessageBox.Show("ERROR: Parameters out of range.");
+            } else MessageBox.Show("ERROR: Empty fields.");
         }
     }
 }

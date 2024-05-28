@@ -12,6 +12,7 @@ namespace DrawingCreator
         private static string[] FILE_FORMATS = { "PNG (*.png)|*.png", "JPG (*.jpg)|*.jpg", "ICO (*.ico)|*.ico" };
         private static Color currentColor;
         private static Drawing drawing;
+        private static int[] widthAndHeightPreviousValue = { 250, 250 }; // Inicializados a tamaño por defecto.
 
         public static void saveFile(string path, Bitmap image)
         {
@@ -117,6 +118,17 @@ namespace DrawingCreator
             newDrawing.setPreviousInfoInBitmap(drawingView.bitmap);
             drawingView.bitmap = newDrawing.getDrawingBitmap();
             drawing = newDrawing;
+        }
+
+        public static void setWidthAndHeightPreviousValue(int width, int height)
+        {
+            widthAndHeightPreviousValue[0] = width;
+            widthAndHeightPreviousValue[1] = height;
+        }
+
+        public static int[] getWidthAndHeightPreviousValue()
+        {
+            return widthAndHeightPreviousValue;
         }
 
     }

@@ -83,7 +83,6 @@ namespace DrawingCreator.View
             this.SelectionCanvasSizeBox.Size = new System.Drawing.Size(339, 109);
             this.SelectionCanvasSizeBox.TabIndex = 4;
             this.SelectionCanvasSizeBox.TabStop = false;
-            this.SelectionCanvasSizeBox.Text = "Choose your drawing size";
             // 
             // AcceptSizeButton
             // 
