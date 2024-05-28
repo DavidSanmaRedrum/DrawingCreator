@@ -13,6 +13,7 @@ namespace DrawingCreator
         private static Color currentColor;
         private static Drawing drawing;
         private static int[] widthAndHeightPreviousValue = { 250, 250 }; // Inicializados a tamaño por defecto.
+        private static int[] PX_X_Y_VIEWS_POSITION = { 200, 220 };
 
         public static void saveFile(string path, Bitmap image)
         {
@@ -87,7 +88,7 @@ namespace DrawingCreator
 
         public static void closeDrawingView()
         {
-            DrawingView drawingView = (DrawingView) Application.OpenForms["DrawingView"];
+            DrawingView drawingView = (DrawingView) getViewContext("DrawingView");
             drawingView.Close();
         }
 
@@ -111,7 +112,7 @@ namespace DrawingCreator
 
         public static void setDrawingSizeInGeneralDrawingView(int width, int height)
         {
-            DrawingView drawingView = (DrawingView) Application.OpenForms["DrawingView"];
+            DrawingView drawingView = (DrawingView) getViewContext("DrawingView");
             drawingView.FindForm().Size = new Size(width + 33, height + 58); // Vista
             drawingView.Controls[0].Size = new Size(width, height); // Canvas
             Drawing newDrawing = new Drawing(width, height); // Se crea un nuevo dibujo.
@@ -131,5 +132,14 @@ namespace DrawingCreator
             return widthAndHeightPreviousValue;
         }
 
+        public static int[] getPxXYViewsPosition()
+        {
+            return PX_X_Y_VIEWS_POSITION;
+        }
+
+        public static Form getViewContext(string viewName)
+        {
+            return Application.OpenForms[viewName];
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace DrawingCreator.View
@@ -10,16 +11,19 @@ namespace DrawingCreator.View
             InitializeComponent();
         }
 
-        private static int MINIMUM_SCROLL_VALUE = 0;
-        private static int MAXIMUM_SCROLL_VALUE = 264;
-        private static int MIN_PX_RANK = 32;
-        private static int MAX_PX_RANK = 1000;
+        private const int MINIMUM_SCROLL_VALUE = 0;
+        private const int MAXIMUM_SCROLL_VALUE = 264;
+        private const int MIN_PX_RANK = 32;
+        private const int MAX_PX_RANK = 1000;
+        private const int PX_EXTRA_SEP = 30;
 
         private void OptionsView_Load(object sender, EventArgs e)
         {
             // Propiedades:
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
+            int[] viewPositionsInDesktop = Controller.getPxXYViewsPosition();
+            Location = new Point(viewPositionsInDesktop[0] + Controller.getViewContext("DrawingView").Width + PX_EXTRA_SEP, viewPositionsInDesktop[1]);
 
             // Inicialización "scrolls"
             RedScroll.Minimum = MINIMUM_SCROLL_VALUE;

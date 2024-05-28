@@ -12,14 +12,16 @@ namespace DrawingCreator
         }
 
         public Bitmap bitmap;
-        private static int DEF_DRAWING_WIDTH = 250;
-        private static int DEF_DRAWING_HEIGHT = 250;
+        private const int DEF_DRAWING_WIDTH = 250;
+        private const int DEF_DRAWING_HEIGHT = 250;
 
         private void DrawCreator_Load(object sender, EventArgs e)
         {
             // Propiedades:
             FormBorderStyle = FormBorderStyle.FixedSingle;
             MaximizeBox = false;
+            int[] viewPositionsInDesktop = Controller.getPxXYViewsPosition();
+            Location = new Point(viewPositionsInDesktop[0], viewPositionsInDesktop[1]);
 
             // Inicialización tamaño vista "DrawingView"
             Size = new Size(DEF_DRAWING_WIDTH + 33, DEF_DRAWING_HEIGHT + 58);
