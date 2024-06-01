@@ -14,6 +14,7 @@ namespace DrawingCreator
         private static Drawing drawing;
         private static int[] widthAndHeightPreviousValue = { 250, 250 }; // Inicializados a tamaño por defecto.
         private static int[] PX_X_Y_VIEWS_POSITION = { 200, 220 };
+        private static int nTool = 0; // Inicializamos con el "lápiz".
 
         public static void saveFile(string path)
         {
@@ -121,7 +122,6 @@ namespace DrawingCreator
             drawingView.bitmap = newDrawing.getDrawingBitmap();
             // El refrescado se debe hacer en la vista, con la instancia de la vista desde aquí no funciona.
             drawingView.refresh();
-
             drawing = newDrawing; // Se establece para que pueda ser obtenido y guardado. (MVC)
         }
 
@@ -144,6 +144,27 @@ namespace DrawingCreator
         public static Form getViewContext(string viewName)
         {
             return Application.OpenForms[viewName];
+        }
+
+        public static void setNumberOfTool(int numberOfTool)
+        {
+            nTool = numberOfTool;
+        }
+
+        public static int getNumberOfTool()
+        {
+            return nTool;
+        }
+
+        public static void paintBucket(Color mouseDownColor)
+        {
+            DrawingView drawingView = (DrawingView) getViewContext("DrawingView");
+            Drawing paintBucketDrawing = new Drawing(drawing.getDrawingBitmap().Width, drawing.getDrawingBitmap().Height);
+            paintBucketDrawing.setPreviousInfoInBitmap(drawingView.bitmap);
+            paintBucketDrawing.paintBucket(currentColor, mouseDownColor);
+            drawingView.bitmap = paintBucketDrawing.getDrawingBitmap();
+            drawingView.refresh();
+            drawing = paintBucketDrawing;
         }
     }
 }

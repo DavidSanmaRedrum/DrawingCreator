@@ -13,6 +13,8 @@ namespace DrawingCreator
         }
 
         public Bitmap bitmap;
+        private int x;
+        private int y;
         private const int DEF_DRAWING_WIDTH = 250;
         private const int DEF_DRAWING_HEIGHT = 250;
 
@@ -46,8 +48,11 @@ namespace DrawingCreator
                 && e.Y < bitmap.Height
                 && e.Y > -1)
             {
-                bitmap.SetPixel(e.X, e.Y, Controller.getCurrentColor());
-                CanvasBox.Image = bitmap;
+                if(Controller.getNumberOfTool() == 0)
+                {
+                    bitmap.SetPixel(e.X, e.Y, Controller.getCurrentColor());
+                    CanvasBox.Image = bitmap;
+                }
             }
         }
 
@@ -59,10 +64,14 @@ namespace DrawingCreator
                 && e.Y < bitmap.Height
                 && e.Y > -1)
             {
-                bitmap.SetPixel(e.X, e.Y, Controller.getCurrentColor());
-                CanvasBox.Image = bitmap;
+                if(Controller.getNumberOfTool() == 1)
+                {
+                    Controller.paintBucket(bitmap.GetPixel(e.X, e.Y));
+                } else {
+                    bitmap.SetPixel(e.X, e.Y, Controller.getCurrentColor());
+                    CanvasBox.Image = bitmap;
+                }
             }
-
         }
 
         public void refresh()

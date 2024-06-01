@@ -145,6 +145,11 @@ namespace DrawingCreator.View
                 } else MessageBox.Show("ERROR: Parameters out of range.");
             } else MessageBox.Show("ERROR: Empty fields.");
         }
+
+        private void PaintBucketButton_Click(object sender, EventArgs e)
+        {
+            Controller.setNumberOfTool(1); // Cubo de pintura.
+        }
     }
 }
 

@@ -36,5 +36,18 @@ namespace DrawingCreator.Model
             }
         }
 
+        public void paintBucket(Color mainColor, Color mouseDownColor)
+        {
+            // mainColor es el color con el que vamos a pintar.
+            // mouseDownColor es el color que vamos a convertir en mainColor.
+            for (int x = 0; x < this.bitmap.Width; x++)
+            {
+                for (int y = 0; y < this.bitmap.Height; y++)
+                {
+                    if (this.bitmap.GetPixel(x, y).Equals(mouseDownColor)) this.bitmap.SetPixel(x, y, mainColor);
+                }
+            }
+        }
+
     }
 }
