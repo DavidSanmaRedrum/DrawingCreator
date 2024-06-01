@@ -90,7 +90,7 @@ namespace DrawingCreator.View
                 saveDialog.Title = "Save File";
                 saveDialog.Filter = Controller.getFileFormats();
                 saveDialog.ShowDialog();
-                if (!saveDialog.FileName.Equals("")) Controller.saveFile(saveDialog.FileName, Controller.getDrawingBitmap());
+                if (!saveDialog.FileName.Equals("")) Controller.saveFile(saveDialog.FileName);
             }
             else
             {

@@ -3,6 +3,7 @@ using DrawingCreator.View;
 using System;
 using System.Drawing;
 using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace DrawingCreator
@@ -15,11 +16,11 @@ namespace DrawingCreator
         private static int[] widthAndHeightPreviousValue = { 250, 250 }; // Inicializados a tamaño por defecto.
         private static int[] PX_X_Y_VIEWS_POSITION = { 200, 220 };
 
-        public static void saveFile(string path, Bitmap image)
+        public static void saveFile(string path)
         {
             const int SUB_STRING_LEN = 4; // Longitud de la extensión con el punto.
                                           //const char SEPARATOR = '|';
-
+            Bitmap image = drawing.getDrawingBitmap();
             switch (path.Substring(path.Length - SUB_STRING_LEN, SUB_STRING_LEN))
             {
                 case ".png":
@@ -117,8 +118,12 @@ namespace DrawingCreator
             drawingView.Controls[0].Size = new Size(width, height); // Canvas
             Drawing newDrawing = new Drawing(width, height); // Se crea un nuevo dibujo.
             newDrawing.setPreviousInfoInBitmap(drawingView.bitmap);
-            drawingView.bitmap = newDrawing.getDrawingBitmap();
-            drawing = newDrawing;
+
+            Bitmap newBitmap = newDrawing.getDrawingBitmap();
+            drawingView.bitmap = newBitmap;
+            drawingView.refresh();
+
+            drawing = newDrawing; // Se establece para que pueda ser obtenido y guardado. (MVC)
         }
 
         public static void setWidthAndHeightPreviousValue(int width, int height)

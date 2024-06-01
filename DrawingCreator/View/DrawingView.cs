@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace DrawingCreator
@@ -63,5 +64,13 @@ namespace DrawingCreator
             }
 
         }
+
+        public void refresh()
+        {
+            CanvasBox.Image = bitmap;
+            CanvasBox.Refresh();
+            Thread.Sleep(100);
+        }
+
     }
 }
