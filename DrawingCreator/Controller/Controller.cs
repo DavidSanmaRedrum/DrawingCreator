@@ -118,8 +118,8 @@ namespace DrawingCreator
             Drawing newDrawing = new Drawing(width, height); // Se crea un nuevo dibujo.
             newDrawing.setPreviousInfoInBitmap(drawingView.bitmap);
 
-            Bitmap newBitmap = newDrawing.getDrawingBitmap();
-            drawingView.bitmap = newBitmap;
+            drawingView.bitmap = newDrawing.getDrawingBitmap();
+            // El refrescado se debe hacer en la vista, con la instancia de la vista desde aquí no funciona.
             drawingView.refresh();
 
             drawing = newDrawing; // Se establece para que pueda ser obtenido y guardado. (MVC)
