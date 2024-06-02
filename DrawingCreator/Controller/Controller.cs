@@ -15,6 +15,8 @@ namespace DrawingCreator
         private static int[] widthAndHeightPreviousValue = { 250, 250 }; // Inicializados a tamaño por defecto.
         private static int[] PX_X_Y_VIEWS_POSITION = { 200, 220 };
         private static int nTool = 0; // Inicializamos con el "lápiz".
+        private static int zoomPercent = 0;
+        private static bool isZoomed = false;    
 
         public static void saveFile(string path)
         {
@@ -111,6 +113,21 @@ namespace DrawingCreator
             return drawing.getDrawingBitmap();
         }
 
+        public static bool getZoomState()
+        {
+            return isZoomed;
+        }
+
+        public static int getZoomPercent()
+        {
+            return zoomPercent;
+        }
+
+        public static void setZoomPercent(int percent)
+        {
+            zoomPercent = percent;
+        }
+
         public static void setDrawingSizeInGeneralDrawingView(int width, int height)
         {
             DrawingView drawingView = (DrawingView) getViewContext("DrawingView");
@@ -165,6 +182,18 @@ namespace DrawingCreator
             drawingView.bitmap = paintBucketDrawing.getDrawingBitmap();
             drawingView.refresh();
             drawing = paintBucketDrawing;
+        }
+
+        public static void imageZoom(int percent)
+        {
+            isZoomed = false;
+            if (percent > 0) isZoomed = true;
+            DrawingView drawingView = (DrawingView)getViewContext("DrawingView");
+            Drawing zoomDrawing = new Drawing(drawing.getDrawingBitmap().Width, drawing.getDrawingBitmap().Height);
+            zoomDrawing.setPreviousInfoInBitmap(drawingView.bitmap);
+            zoomDrawing.zoom(percent);
+            drawingView.setZoomCanvasImage(zoomDrawing.getDrawingBitmap());
+            drawing = zoomDrawing;
         }
     }
 }

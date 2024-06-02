@@ -16,6 +16,7 @@ namespace DrawingCreator.View
         private const int MIN_PX_RANK = 32;
         private const int MAX_PX_RANK = 1000;
         private const int PX_EXTRA_SEP = 30;
+        private const int MAXIMUM_SCROLL_ZOOM = 809;
 
         private void OptionsView_Load(object sender, EventArgs e)
         {
@@ -56,6 +57,12 @@ namespace DrawingCreator.View
             SampleColorBox.BackColor = Controller.getRGBColorWithMix(Convert.ToInt16(RedValueBox.Text),
                 Convert.ToInt16(GreenValueBox.Text),
                 Convert.ToInt16(BlueValueBox.Text));
+
+            // Inicialización Zoom.
+            ZoomScroll.Minimum = 0;
+            ZoomScroll.Maximum = MAXIMUM_SCROLL_ZOOM;
+            ZoomBox.ReadOnly = true;
+            ZoomBox.Text = ZoomScroll.Minimum.ToString() + "%";
 
             // Inicialización imágenes de los botones de las herramientas.
             PencilButton.BackgroundImageLayout = ImageLayout.Stretch;
@@ -162,6 +169,16 @@ namespace DrawingCreator.View
             Controller.setNumberOfTool(0); // Lápiz
         }
 
+        private void ZoomScroll_Scroll(object sender, ScrollEventArgs e)
+        {
+            ZoomBox.Text = ZoomScroll.Value.ToString() + "%";
+        }
+
+        private void AcceptZoomButton_Click(object sender, EventArgs e)
+        {
+            Controller.imageZoom(ZoomScroll.Value);
+            Controller.setZoomPercent(ZoomScroll.Value);
+        }
     }
 }
 

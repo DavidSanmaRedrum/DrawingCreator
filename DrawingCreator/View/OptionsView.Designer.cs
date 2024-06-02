@@ -55,24 +55,30 @@ namespace DrawingCreator.View
             this.SaveFileButton = new System.Windows.Forms.Button();
             this.ToolBar = new System.Windows.Forms.ToolStrip();
             this.PencilButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.PaintBucketButton = new System.Windows.Forms.ToolStripButton();
             this.ImagesList = new System.Windows.Forms.ImageList(this.components);
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.ZoomGBox = new System.Windows.Forms.GroupBox();
+            this.AcceptZoomButton = new System.Windows.Forms.Button();
+            this.ZoomScroll = new System.Windows.Forms.HScrollBar();
+            this.ZoomBox = new System.Windows.Forms.TextBox();
             this.OptionsBox.SuspendLayout();
             this.SelectionCanvasSizeBox.SuspendLayout();
             this.SelectionColorsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SampleColorBox)).BeginInit();
             this.ToolBar.SuspendLayout();
+            this.ZoomGBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // OptionsBox
             // 
+            this.OptionsBox.Controls.Add(this.ZoomGBox);
             this.OptionsBox.Controls.Add(this.SelectionCanvasSizeBox);
             this.OptionsBox.Controls.Add(this.SelectionColorsBox);
             this.OptionsBox.Controls.Add(this.SaveFileButton);
             this.OptionsBox.Location = new System.Drawing.Point(12, 38);
             this.OptionsBox.Name = "OptionsBox";
-            this.OptionsBox.Size = new System.Drawing.Size(671, 321);
+            this.OptionsBox.Size = new System.Drawing.Size(671, 397);
             this.OptionsBox.TabIndex = 3;
             this.OptionsBox.TabStop = false;
             this.OptionsBox.Text = "Options";
@@ -168,7 +174,7 @@ namespace DrawingCreator.View
             this.SelectionColorsBox.Controls.Add(this.BlueScroll);
             this.SelectionColorsBox.Controls.Add(this.RedScroll);
             this.SelectionColorsBox.Controls.Add(this.GreenScroll);
-            this.SelectionColorsBox.Location = new System.Drawing.Point(15, 145);
+            this.SelectionColorsBox.Location = new System.Drawing.Point(15, 223);
             this.SelectionColorsBox.Name = "SelectionColorsBox";
             this.SelectionColorsBox.Size = new System.Drawing.Size(643, 158);
             this.SelectionColorsBox.TabIndex = 3;
@@ -257,7 +263,7 @@ namespace DrawingCreator.View
             // 
             // SaveFileButton
             // 
-            this.SaveFileButton.Location = new System.Drawing.Point(578, 54);
+            this.SaveFileButton.Location = new System.Drawing.Point(565, 54);
             this.SaveFileButton.Name = "SaveFileButton";
             this.SaveFileButton.Size = new System.Drawing.Size(80, 70);
             this.SaveFileButton.TabIndex = 1;
@@ -283,16 +289,21 @@ namespace DrawingCreator.View
             this.PencilButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.PencilButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PencilButton.Name = "PencilButton";
-            this.PencilButton.Size = new System.Drawing.Size(29, 28);
+            this.PencilButton.Size = new System.Drawing.Size(29, 22);
             this.PencilButton.Text = "Pencil";
             this.PencilButton.Click += new System.EventHandler(this.PencilButton_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // PaintBucketButton
             // 
             this.PaintBucketButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.PaintBucketButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PaintBucketButton.Name = "PaintBucketButton";
-            this.PaintBucketButton.Size = new System.Drawing.Size(29, 28);
+            this.PaintBucketButton.Size = new System.Drawing.Size(29, 22);
             this.PaintBucketButton.Text = "Paint bucket";
             this.PaintBucketButton.Click += new System.EventHandler(this.PaintBucketButton_Click);
             // 
@@ -303,16 +314,48 @@ namespace DrawingCreator.View
             this.ImagesList.Images.SetKeyName(0, "Pencil.png");
             this.ImagesList.Images.SetKeyName(1, "PaintBucket.png");
             // 
-            // toolStripSeparator1
+            // ZoomGBox
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.ZoomGBox.Controls.Add(this.ZoomBox);
+            this.ZoomGBox.Controls.Add(this.ZoomScroll);
+            this.ZoomGBox.Controls.Add(this.AcceptZoomButton);
+            this.ZoomGBox.Location = new System.Drawing.Point(15, 145);
+            this.ZoomGBox.Name = "ZoomGBox";
+            this.ZoomGBox.Size = new System.Drawing.Size(643, 72);
+            this.ZoomGBox.TabIndex = 5;
+            this.ZoomGBox.TabStop = false;
+            this.ZoomGBox.Text = "Zoom";
+            // 
+            // AcceptZoomButton
+            // 
+            this.AcceptZoomButton.Location = new System.Drawing.Point(475, 21);
+            this.AcceptZoomButton.Name = "AcceptZoomButton";
+            this.AcceptZoomButton.Size = new System.Drawing.Size(155, 33);
+            this.AcceptZoomButton.TabIndex = 0;
+            this.AcceptZoomButton.Text = "ACCEPT ZOOM";
+            this.AcceptZoomButton.UseVisualStyleBackColor = true;
+            this.AcceptZoomButton.Click += new System.EventHandler(this.AcceptZoomButton_Click);
+            // 
+            // ZoomScroll
+            // 
+            this.ZoomScroll.Location = new System.Drawing.Point(18, 25);
+            this.ZoomScroll.Name = "ZoomScroll";
+            this.ZoomScroll.Size = new System.Drawing.Size(377, 23);
+            this.ZoomScroll.TabIndex = 11;
+            this.ZoomScroll.Scroll += new System.Windows.Forms.ScrollEventHandler(this.ZoomScroll_Scroll);
+            // 
+            // ZoomBox
+            // 
+            this.ZoomBox.Location = new System.Drawing.Point(407, 26);
+            this.ZoomBox.Name = "ZoomBox";
+            this.ZoomBox.Size = new System.Drawing.Size(52, 22);
+            this.ZoomBox.TabIndex = 11;
             // 
             // OptionsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(697, 372);
+            this.ClientSize = new System.Drawing.Size(697, 474);
             this.Controls.Add(this.ToolBar);
             this.Controls.Add(this.OptionsBox);
             this.Name = "OptionsView";
@@ -327,6 +370,8 @@ namespace DrawingCreator.View
             ((System.ComponentModel.ISupportInitialize)(this.SampleColorBox)).EndInit();
             this.ToolBar.ResumeLayout(false);
             this.ToolBar.PerformLayout();
+            this.ZoomGBox.ResumeLayout(false);
+            this.ZoomGBox.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -360,5 +405,9 @@ namespace DrawingCreator.View
         private System.Windows.Forms.ToolStripButton PencilButton;
         private System.Windows.Forms.ImageList ImagesList;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.GroupBox ZoomGBox;
+        private System.Windows.Forms.Button AcceptZoomButton;
+        private System.Windows.Forms.HScrollBar ZoomScroll;
+        private System.Windows.Forms.TextBox ZoomBox;
     }
 }

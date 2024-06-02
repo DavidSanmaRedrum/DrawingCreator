@@ -48,8 +48,19 @@ namespace DrawingCreator
             {
                 if(Controller.getNumberOfTool() == 0)
                 {
-                    bitmap.SetPixel(e.X, e.Y, Controller.getCurrentColor());
-                    CanvasBox.Image = bitmap;
+                    Bitmap temp = bitmap;
+                    int x = e.X;
+                    int y = e.Y;
+                    if (Controller.getZoomState())
+                    {
+                        temp = Controller.getDrawingBitmap();
+                        // Multiplicar las coordenadas por su tanto por ciento para sacar su nuevo punto.
+                        int zoomPercent = Controller.getZoomPercent();
+                        x = x + (x * zoomPercent) / 100;
+                        y = y + (y * zoomPercent) / 100;
+                    }
+                    temp.SetPixel(x, y, Controller.getCurrentColor());
+                    CanvasBox.Image = temp;
                 }
             }
         }
@@ -66,10 +77,26 @@ namespace DrawingCreator
                 {
                     Controller.paintBucket(bitmap.GetPixel(e.X, e.Y));
                 } else {
-                    bitmap.SetPixel(e.X, e.Y, Controller.getCurrentColor());
-                    CanvasBox.Image = bitmap;
+                    Bitmap temp = bitmap;
+                    int x = e.X;
+                    int y = e.Y;
+                    if (Controller.getZoomState())
+                    {
+                        temp = Controller.getDrawingBitmap();
+                        // Multiplicar las coordenadas por su tanto por ciento para sacar su nuevo punto.
+                        int zoomPercent = Controller.getZoomPercent();
+                        x = x + (x * zoomPercent) / 100;
+                        y = y + (y * zoomPercent) / 100;
+                    }
+                    temp.SetPixel(x, y, Controller.getCurrentColor());
+                    CanvasBox.Image = temp;
                 }
             }
+        }
+
+        public void setZoomCanvasImage(Bitmap zoomImage)
+        {
+            CanvasBox.Image = zoomImage;
         }
 
         public void refresh()

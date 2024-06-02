@@ -49,5 +49,13 @@ namespace DrawingCreator.Model
             }
         }
 
+        public void zoom(int percent)
+        {
+            Bitmap copy = this.bitmap;
+            this.bitmap = new Bitmap(copy, copy.Width + (percent * copy.Width / 100), copy.Height + (percent * copy.Height / 100));
+            Graphics graphics = Graphics.FromImage(this.bitmap);
+            graphics.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+        }
+
     }
 }
