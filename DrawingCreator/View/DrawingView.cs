@@ -13,8 +13,6 @@ namespace DrawingCreator
         }
 
         public Bitmap bitmap;
-        private int x;
-        private int y;
         private const int DEF_DRAWING_WIDTH = 250;
         private const int DEF_DRAWING_HEIGHT = 250;
 

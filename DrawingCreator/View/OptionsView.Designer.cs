@@ -30,6 +30,7 @@ namespace DrawingCreator.View
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OptionsView));
             this.OptionsBox = new System.Windows.Forms.GroupBox();
             this.SelectionCanvasSizeBox = new System.Windows.Forms.GroupBox();
@@ -52,13 +53,16 @@ namespace DrawingCreator.View
             this.RedScroll = new System.Windows.Forms.HScrollBar();
             this.GreenScroll = new System.Windows.Forms.HScrollBar();
             this.SaveFileButton = new System.Windows.Forms.Button();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.ToolBar = new System.Windows.Forms.ToolStrip();
+            this.PencilButton = new System.Windows.Forms.ToolStripButton();
             this.PaintBucketButton = new System.Windows.Forms.ToolStripButton();
+            this.ImagesList = new System.Windows.Forms.ImageList(this.components);
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.OptionsBox.SuspendLayout();
             this.SelectionCanvasSizeBox.SuspendLayout();
             this.SelectionColorsBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SampleColorBox)).BeginInit();
-            this.toolStrip1.SuspendLayout();
+            this.ToolBar.SuspendLayout();
             this.SuspendLayout();
             // 
             // OptionsBox
@@ -261,33 +265,55 @@ namespace DrawingCreator.View
             this.SaveFileButton.UseVisualStyleBackColor = true;
             this.SaveFileButton.Click += new System.EventHandler(this.SaveFileButton_Click);
             // 
-            // toolStrip1
+            // ToolBar
             // 
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ToolBar.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.ToolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.PencilButton,
+            this.toolStripSeparator1,
             this.PaintBucketButton});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(697, 31);
-            this.toolStrip1.TabIndex = 4;
-            this.toolStrip1.Text = "toolStrip1";
+            this.ToolBar.Location = new System.Drawing.Point(0, 0);
+            this.ToolBar.Name = "ToolBar";
+            this.ToolBar.Size = new System.Drawing.Size(697, 25);
+            this.ToolBar.TabIndex = 4;
+            this.ToolBar.Text = "ToolBar";
+            // 
+            // PencilButton
+            // 
+            this.PencilButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.PencilButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.PencilButton.Name = "PencilButton";
+            this.PencilButton.Size = new System.Drawing.Size(29, 28);
+            this.PencilButton.Text = "Pencil";
+            this.PencilButton.Click += new System.EventHandler(this.PencilButton_Click);
             // 
             // PaintBucketButton
             // 
             this.PaintBucketButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.PaintBucketButton.Image = ((System.Drawing.Image)(resources.GetObject("PaintBucketButton.Image")));
             this.PaintBucketButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PaintBucketButton.Name = "PaintBucketButton";
             this.PaintBucketButton.Size = new System.Drawing.Size(29, 28);
             this.PaintBucketButton.Text = "Paint bucket";
             this.PaintBucketButton.Click += new System.EventHandler(this.PaintBucketButton_Click);
             // 
+            // ImagesList
+            // 
+            this.ImagesList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ImagesList.ImageStream")));
+            this.ImagesList.TransparentColor = System.Drawing.Color.Transparent;
+            this.ImagesList.Images.SetKeyName(0, "Pencil.png");
+            this.ImagesList.Images.SetKeyName(1, "PaintBucket.png");
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
             // OptionsView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(697, 372);
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.ToolBar);
             this.Controls.Add(this.OptionsBox);
             this.Name = "OptionsView";
             this.Text = "Options";
@@ -299,8 +325,8 @@ namespace DrawingCreator.View
             this.SelectionColorsBox.ResumeLayout(false);
             this.SelectionColorsBox.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.SampleColorBox)).EndInit();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.ToolBar.ResumeLayout(false);
+            this.ToolBar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -329,7 +355,10 @@ namespace DrawingCreator.View
         private System.Windows.Forms.Label PXLabel2;
         private System.Windows.Forms.Label PXLabel1;
         private System.Windows.Forms.Button AcceptSizeButton;
-        private System.Windows.Forms.ToolStrip toolStrip1;
+        private System.Windows.Forms.ToolStrip ToolBar;
         private System.Windows.Forms.ToolStripButton PaintBucketButton;
+        private System.Windows.Forms.ToolStripButton PencilButton;
+        private System.Windows.Forms.ImageList ImagesList;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
     }
 }

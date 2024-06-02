@@ -56,6 +56,12 @@ namespace DrawingCreator.View
             SampleColorBox.BackColor = Controller.getRGBColorWithMix(Convert.ToInt16(RedValueBox.Text),
                 Convert.ToInt16(GreenValueBox.Text),
                 Convert.ToInt16(BlueValueBox.Text));
+
+            // Inicialización imágenes de los botones de las herramientas.
+            PencilButton.BackgroundImageLayout = ImageLayout.Stretch;
+            PencilButton.BackgroundImage = ImagesList.Images[0];
+            PaintBucketButton.BackgroundImageLayout = ImageLayout.Stretch;
+            PaintBucketButton.BackgroundImage = ImagesList.Images[1];
         }
 
         private void RedScroll_Scroll(object sender, ScrollEventArgs e)
@@ -150,6 +156,12 @@ namespace DrawingCreator.View
         {
             Controller.setNumberOfTool(1); // Cubo de pintura.
         }
+
+        private void PencilButton_Click(object sender, EventArgs e)
+        {
+            Controller.setNumberOfTool(0); // Lápiz
+        }
+
     }
 }
 
