@@ -59,8 +59,10 @@ namespace DrawingCreator.View
 
             // Inicialización imágenes de los botones de las herramientas.
             PencilButton.BackgroundImageLayout = ImageLayout.Stretch;
+            PencilButton.Image = ImagesList.Images[0];
             PencilButton.BackgroundImage = ImagesList.Images[0];
             PaintBucketButton.BackgroundImageLayout = ImageLayout.Stretch;
+            PaintBucketButton.Image = ImagesList.Images[1];
             PaintBucketButton.BackgroundImage = ImagesList.Images[1];
         }
 
@@ -161,7 +163,6 @@ namespace DrawingCreator.View
         {
             Controller.setNumberOfTool(0); // Lápiz
         }
-
     }
 }
 

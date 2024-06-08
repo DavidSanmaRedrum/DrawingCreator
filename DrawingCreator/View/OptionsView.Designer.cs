@@ -55,9 +55,9 @@ namespace DrawingCreator.View
             this.SaveFileButton = new System.Windows.Forms.Button();
             this.ToolBar = new System.Windows.Forms.ToolStrip();
             this.PencilButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.PaintBucketButton = new System.Windows.Forms.ToolStripButton();
             this.ImagesList = new System.Windows.Forms.ImageList(this.components);
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.OptionsBox.SuspendLayout();
             this.SelectionCanvasSizeBox.SuspendLayout();
             this.SelectionColorsBox.SuspendLayout();
@@ -283,16 +283,21 @@ namespace DrawingCreator.View
             this.PencilButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.PencilButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PencilButton.Name = "PencilButton";
-            this.PencilButton.Size = new System.Drawing.Size(29, 28);
+            this.PencilButton.Size = new System.Drawing.Size(29, 22);
             this.PencilButton.Text = "Pencil";
             this.PencilButton.Click += new System.EventHandler(this.PencilButton_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // PaintBucketButton
             // 
             this.PaintBucketButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.PaintBucketButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PaintBucketButton.Name = "PaintBucketButton";
-            this.PaintBucketButton.Size = new System.Drawing.Size(29, 28);
+            this.PaintBucketButton.Size = new System.Drawing.Size(29, 22);
             this.PaintBucketButton.Text = "Paint bucket";
             this.PaintBucketButton.Click += new System.EventHandler(this.PaintBucketButton_Click);
             // 
@@ -300,13 +305,8 @@ namespace DrawingCreator.View
             // 
             this.ImagesList.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ImagesList.ImageStream")));
             this.ImagesList.TransparentColor = System.Drawing.Color.Transparent;
-            this.ImagesList.Images.SetKeyName(0, "Pencil.png");
+            this.ImagesList.Images.SetKeyName(0, "test.png");
             this.ImagesList.Images.SetKeyName(1, "PaintBucket.png");
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // OptionsView
             // 
