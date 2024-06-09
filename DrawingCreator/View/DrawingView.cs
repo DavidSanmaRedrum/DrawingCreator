@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -15,6 +16,7 @@ namespace DrawingCreator
         public Bitmap bitmap;
         private const int DEF_DRAWING_WIDTH = 250;
         private const int DEF_DRAWING_HEIGHT = 250;
+        private Point previousPosition = new Point(-1, -1);
 
         private void DrawCreator_Load(object sender, EventArgs e)
         {
@@ -46,12 +48,22 @@ namespace DrawingCreator
                 && e.Y < bitmap.Height
                 && e.Y > -1)
             {
-                if(Controller.getNumberOfTool() == 0)
+                if (Controller.getNumberOfTool() == 0)
                 {
-                    bitmap.SetPixel(e.X, e.Y, Controller.getCurrentColor());
-                    CanvasBox.Image = bitmap;
+                    Point currentPosition = new Point(e.X, e.Y);
+                    if (previousPosition.X == -1) previousPosition = currentPosition;
+                    Graphics drawing = Graphics.FromImage(bitmap);
+                    drawing.SmoothingMode = SmoothingMode.AntiAlias;
+                    drawing.DrawLine(new Pen(Controller.getCurrentColor()), previousPosition.X, previousPosition.Y, currentPosition.X, currentPosition.Y);
+                    previousPosition = currentPosition;
                 }
+                CanvasBox.Image = bitmap;
             }
+        }
+
+        private void CanvasBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            previousPosition = new Point(-1, -1);
         }
 
         private void CanvasBox_MouseDown(object sender, MouseEventArgs e)
