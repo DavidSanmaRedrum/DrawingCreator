@@ -159,7 +159,7 @@ namespace DrawingCreator
         public static void paintBucket(Color mouseDownColor)
         {
             DrawingView drawingView = (DrawingView) getViewContext("DrawingView");
-            Drawing paintBucketDrawing = new Drawing(drawing.getDrawingBitmap().Width, drawing.getDrawingBitmap().Height);
+            Drawing paintBucketDrawing = new Drawing();
             paintBucketDrawing.setDrawingBitmap(drawingView.bitmap);
             paintBucketDrawing.paintBucket(currentColor, mouseDownColor);
             drawingView.bitmap = paintBucketDrawing.getDrawingBitmap();
@@ -170,8 +170,12 @@ namespace DrawingCreator
         public static void generalDraft()
         {
             DrawingView drawingView = (DrawingView) getViewContext("DrawingView");
-            drawingView.bitmap = new Bitmap(drawing.getDrawingBitmap().Width, drawing.getDrawingBitmap().Height);
+            Bitmap voidBitmap = new Bitmap(drawing.getDrawingBitmap().Width, drawing.getDrawingBitmap().Height);
+            drawingView.bitmap = voidBitmap;
             drawingView.refresh();
+            Drawing voidDrawing = new Drawing();
+            voidDrawing.setDrawingBitmap(voidBitmap);
+            drawing = voidDrawing;
         }
     }
 }

@@ -7,6 +7,8 @@ namespace DrawingCreator.Model
     {
         private Bitmap bitmap;
 
+        public Drawing() { }
+
         public Drawing(int width, int height)
         {
             this.bitmap = new Bitmap(width, height);
