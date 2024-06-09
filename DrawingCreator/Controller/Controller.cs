@@ -166,5 +166,12 @@ namespace DrawingCreator
             drawingView.refresh();
             drawing = paintBucketDrawing;
         }
+
+        public static void generalDraft()
+        {
+            DrawingView drawingView = (DrawingView) getViewContext("DrawingView");
+            drawingView.bitmap = new Bitmap(drawing.getDrawingBitmap().Width, drawing.getDrawingBitmap().Height);
+            drawingView.refresh();
+        }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Drawing;
-using System.Drawing.Drawing2D;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -53,7 +52,6 @@ namespace DrawingCreator
                     Point currentPosition = new Point(e.X, e.Y);
                     if (previousPosition.X == -1) previousPosition = currentPosition;
                     Graphics drawing = Graphics.FromImage(bitmap);
-                    drawing.SmoothingMode = SmoothingMode.AntiAlias;
                     drawing.DrawLine(new Pen(Controller.getCurrentColor()), previousPosition.X, previousPosition.Y, currentPosition.X, currentPosition.Y);
                     previousPosition = currentPosition;
                 }

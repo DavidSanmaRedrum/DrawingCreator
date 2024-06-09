@@ -58,6 +58,8 @@ namespace DrawingCreator.View
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.PaintBucketButton = new System.Windows.Forms.ToolStripButton();
             this.ImagesList = new System.Windows.Forms.ImageList(this.components);
+            this.GeneralDraftButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.OptionsBox.SuspendLayout();
             this.SelectionCanvasSizeBox.SuspendLayout();
             this.SelectionColorsBox.SuspendLayout();
@@ -271,10 +273,12 @@ namespace DrawingCreator.View
             this.ToolBar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.PencilButton,
             this.toolStripSeparator1,
-            this.PaintBucketButton});
+            this.PaintBucketButton,
+            this.toolStripSeparator2,
+            this.GeneralDraftButton});
             this.ToolBar.Location = new System.Drawing.Point(0, 0);
             this.ToolBar.Name = "ToolBar";
-            this.ToolBar.Size = new System.Drawing.Size(697, 25);
+            this.ToolBar.Size = new System.Drawing.Size(697, 27);
             this.ToolBar.TabIndex = 4;
             this.ToolBar.Text = "ToolBar";
             // 
@@ -283,21 +287,21 @@ namespace DrawingCreator.View
             this.PencilButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.PencilButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PencilButton.Name = "PencilButton";
-            this.PencilButton.Size = new System.Drawing.Size(29, 22);
+            this.PencilButton.Size = new System.Drawing.Size(29, 24);
             this.PencilButton.Text = "Pencil";
             this.PencilButton.Click += new System.EventHandler(this.PencilButton_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
             // 
             // PaintBucketButton
             // 
             this.PaintBucketButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.PaintBucketButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.PaintBucketButton.Name = "PaintBucketButton";
-            this.PaintBucketButton.Size = new System.Drawing.Size(29, 22);
+            this.PaintBucketButton.Size = new System.Drawing.Size(29, 24);
             this.PaintBucketButton.Text = "Paint bucket";
             this.PaintBucketButton.Click += new System.EventHandler(this.PaintBucketButton_Click);
             // 
@@ -307,6 +311,21 @@ namespace DrawingCreator.View
             this.ImagesList.TransparentColor = System.Drawing.Color.Transparent;
             this.ImagesList.Images.SetKeyName(0, "test.png");
             this.ImagesList.Images.SetKeyName(1, "PaintBucket.png");
+            // 
+            // GeneralDraftButton
+            // 
+            this.GeneralDraftButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.GeneralDraftButton.Image = ((System.Drawing.Image)(resources.GetObject("GeneralDraftButton.Image")));
+            this.GeneralDraftButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.GeneralDraftButton.Name = "GeneralDraftButton";
+            this.GeneralDraftButton.Size = new System.Drawing.Size(29, 24);
+            this.GeneralDraftButton.Text = "General Draft";
+            this.GeneralDraftButton.Click += new System.EventHandler(this.GeneralDraftButton_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
             // 
             // OptionsView
             // 
@@ -360,5 +379,7 @@ namespace DrawingCreator.View
         private System.Windows.Forms.ToolStripButton PencilButton;
         private System.Windows.Forms.ImageList ImagesList;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton GeneralDraftButton;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
     }
 }

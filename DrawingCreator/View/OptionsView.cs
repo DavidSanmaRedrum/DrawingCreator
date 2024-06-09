@@ -163,6 +163,11 @@ namespace DrawingCreator.View
         {
             Controller.setNumberOfTool(0); // Lápiz
         }
+
+        private void GeneralDraftButton_Click(object sender, EventArgs e)
+        {
+            Controller.generalDraft(); // Borrador general.
+        }
     }
 }
 
