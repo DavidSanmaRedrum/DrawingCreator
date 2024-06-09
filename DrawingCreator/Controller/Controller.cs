@@ -160,7 +160,7 @@ namespace DrawingCreator
         {
             DrawingView drawingView = (DrawingView) getViewContext("DrawingView");
             Drawing paintBucketDrawing = new Drawing(drawing.getDrawingBitmap().Width, drawing.getDrawingBitmap().Height);
-            paintBucketDrawing.setPreviousInfoInBitmap(drawingView.bitmap);
+            paintBucketDrawing.setDrawingBitmap(drawingView.bitmap);
             paintBucketDrawing.paintBucket(currentColor, mouseDownColor);
             drawingView.bitmap = paintBucketDrawing.getDrawingBitmap();
             drawingView.refresh();

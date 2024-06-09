@@ -17,6 +17,11 @@ namespace DrawingCreator.Model
             return this.bitmap;
         }
 
+        public void setDrawingBitmap(Bitmap bitmap)
+        {
+            this.bitmap = bitmap;
+        }
+
         public void setPreviousInfoInBitmap(Bitmap previousBitmap)
         {
             int widthRest = this.bitmap.Width - previousBitmap.Width;
